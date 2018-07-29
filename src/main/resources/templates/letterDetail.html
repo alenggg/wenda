@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="zh-CN"
+      dropeffect="none"
+      class="js is-AppPromotionBarVisible cssanimations csstransforms csstransitions flexbox no-touchevents no-mobile"
+      style="">
+<head th:include="components/head :: head"></head>
+<body class="zhi ">
+<div th:replace="components/head :: div1"></div>
+
+<link rel="stylesheet" href="/styles/letter.css">
+<div id="main">
+    <div class="zg-wrap zu-main clearfix ">
+        <ul class="letter-chatlist">
+            <li th:each="message : ${messages}" id="msg-item-4009580">
+                <a class="list-head">
+                    <img alt="头像" th:src="${message.get('headUrl')}">
+                </a>
+                <div class="tooltip fade right in">
+                    <div class="tooltip-arrow"></div>
+                    <div class="tooltip-inner letter-chat clearfix">
+                        <div class="letter-info">
+                            <p class="letter-time" th:inline="text">
+                                [[${#dates.format(message.get('message').createdDate,'yyyy-MM-dd HH:mm:ss')}]]
+                            </p>
+                            <!-- <a href="javascript:void(0);" id="del-link" name="4009580">删除</a> -->
+                        </div>
+                        <p class="chat-content" th:text="${message.get('message').content}">
+                        </p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script th:replace="components/head :: footer"></script>
+<script type="text/javascript" src="/scripts/main/site/detail.js"></script>
+</body>
+</html>
